@@ -5,7 +5,7 @@
     
         <flux:input wire:model='password' viewable label="Senha" type="password" placeholder="Your password" />
     
-        <flux:checkbox wire:model='accepted' label="Eu li e concordo com termos e política" />
+        <flux:checkbox wire:model='accepted' label="Eu li e concordo com termos e políticas" />
 
         <flux:button variant="primary" type="submit" class="w-full cursor-pointer">
             Cadastrar

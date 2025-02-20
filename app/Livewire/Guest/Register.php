@@ -14,7 +14,7 @@ class Register extends Component
     #[Validate(['required', 'min:8'])] 
     public $password;
 
-    #[Validate('required')] 
+    #[Validate('accepted', as: 'termos e políticas')] 
     public $accepted = false;
 
     #[Layout('components.layouts.guest')]
