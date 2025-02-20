@@ -26,10 +26,10 @@ class Register extends Component
     public function submit(): void
     {
         $this->validate();
-        dd(
-            $this->email,
-            $this->password,
-            $this->accepted,
-        );
+        // dd(
+        //     $this->email,
+        //     $this->password,
+        //     $this->accepted,
+        // );
     }
 }
