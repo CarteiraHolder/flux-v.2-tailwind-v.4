@@ -16,6 +16,6 @@ class Home extends Component
     {
         Auth::logout();
 
-        redirect()->route('login');
+        $this->redirect(route('login'), navigate: true);
     }
 }

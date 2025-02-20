@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Guest;
 
+use Flux\Flux;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
@@ -12,10 +13,12 @@ class Login extends Component
     #[Validate(['required', 'email'])]
     public $email;
 
-    #[Validate(['required', 'min:8'])]
+    #[Validate(['required'])]
     public $password;
 
     public $remember = false;
+    public $authenticationFailure = false;
+
     
     #[Layout("components.layouts.guest")]
     public function render()
@@ -25,6 +28,7 @@ class Login extends Component
 
     public function submit(): void
     {
+        $this->authenticationFailure = false;
         $this->validate();
 
         $credentials = [
@@ -32,9 +36,11 @@ class Login extends Component
             'password' => $this->password,
         ];
 
-        Auth::attempt($credentials, $this->remember);
+        if (Auth::attempt($credentials, $this->remember)) {
+            $this->redirect(route('home'), navigate: true);
+            return;
+        }
 
-        redirect()->route('home');
-
+        $this->authenticationFailure = true;
     }
 }

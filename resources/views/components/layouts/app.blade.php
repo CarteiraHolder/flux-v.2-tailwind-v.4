@@ -15,6 +15,8 @@
     </head>
     <body>
         {{ $slot }}
+        
+        <flux:toast />
         @fluxScripts
     </body>
 </html>
