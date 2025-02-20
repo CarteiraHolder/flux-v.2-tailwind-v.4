@@ -42,6 +42,6 @@ class Register extends Component
 
         Auth::attempt($credentials);
 
-        redirect('/login');
+        redirect()->route('home');
     }
 }

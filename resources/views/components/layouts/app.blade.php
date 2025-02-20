@@ -14,9 +14,7 @@
 
     </head>
     <body>
-
         {{ $slot }}
         @fluxScripts
-
     </body>
 </html>
