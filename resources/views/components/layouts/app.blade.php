@@ -8,11 +8,15 @@
         <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet" />
         
         <title>{{ $title ?? 'Page Title' }}</title>
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         @fluxAppearance
+
     </head>
-    <body class="">
+    <body>
+
         {{ $slot }}
         @fluxScripts
+
     </body>
 </html>
