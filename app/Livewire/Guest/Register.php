@@ -2,12 +2,17 @@
 
 namespace App\Livewire\Guest;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class Register extends Component
 {
+    #[Validate(['required'])] 
+    public $name;
+
     #[Validate(['required', 'email'])] 
     public $email;
 
@@ -26,10 +31,17 @@ class Register extends Component
     public function submit(): void
     {
         $this->validate();
-        // dd(
-        //     $this->email,
-        //     $this->password,
-        //     $this->accepted,
-        // );
+
+        $credentials = [
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => $this->password,
+        ];
+
+        User::query()->firstOrCreate($credentials);
+
+        Auth::attempt($credentials);
+
+        redirect('/login');
     }
 }
