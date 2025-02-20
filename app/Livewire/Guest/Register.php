@@ -13,7 +13,7 @@ class Register extends Component
     #[Validate(['required'])] 
     public $name;
 
-    #[Validate(['required', 'email'])] 
+    #[Validate(['required', 'email', 'unique:users'])] 
     public $email;
 
     #[Validate(['required', 'min:8'])] 
